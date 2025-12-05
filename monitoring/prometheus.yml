@@ -1,0 +1,96 @@
+# Prometheus Configuration for Triton Agentic Monitoring
+#
+# This configuration scrapes metrics from:
+# - Triton API (FastAPI metrics)
+# - Celery Worker (task metrics)
+# - PostgreSQL (database metrics)
+# - Redis (cache/broker metrics)
+# - Docker containers (resource metrics)
+
+global:
+  scrape_interval: 15s  # Scrape targets every 15 seconds
+  evaluation_interval: 15s  # Evaluate rules every 15 seconds
+  external_labels:
+    cluster: 'triton-agentic'
+    environment: 'development'
+
+# Alertmanager configuration (optional - uncomment if using)
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets: ['alertmanager:9093']
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "alerts/*.yml"
+
+# Scrape configuration
+scrape_configs:
+  # =============================================================================
+  # Prometheus self-monitoring
+  # =============================================================================
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          service: 'prometheus'
+
+  # =============================================================================
+  # Triton API Metrics
+  # =============================================================================
+  - job_name: 'triton-api'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['triton-api:8000']
+        labels:
+          service: 'triton-api'
+          app: 'fastapi'
+    metrics_path: '/metrics'
+
+  # =============================================================================
+  # Celery Worker Metrics (via celery-exporter)
+  # =============================================================================
+  - job_name: 'celery'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['triton-celery-exporter:9808']
+        labels:
+          service: 'celery'
+          app: 'task-queue'
+    metrics_path: '/metrics'
+
+  # =============================================================================
+  # PostgreSQL Database Metrics
+  # =============================================================================
+  - job_name: 'postgres'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['triton-postgres-exporter:9187']
+        labels:
+          service: 'postgres'
+          database: 'triton_db'
+
+  # =============================================================================
+  # Redis Metrics
+  # =============================================================================
+  - job_name: 'redis'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['triton-redis-exporter:9121']
+        labels:
+          service: 'redis'
+          role: 'broker'
+
+  # =============================================================================
+  # Docker Container Metrics (optional - requires node-exporter)
+  # =============================================================================
+  # - job_name: 'node-exporter'
+  #   scrape_interval: 30s
+  #   static_configs:
+  #     - targets: ['node-exporter:9100']
+  #       labels:
+  #         service: 'node-exporter'
+
+# Remote write configuration (optional - for long-term storage)
+# remote_write:
+#   - url: "http://remote-storage:9090/api/v1/write"

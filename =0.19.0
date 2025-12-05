@@ -1,0 +1,14 @@
+Collecting prometheus-fastapi-instrumentator
+  Downloading prometheus_fastapi_instrumentator-7.1.0-py3-none-any.whl.metadata (13 kB)
+Collecting prometheus-client
+  Downloading prometheus_client-0.23.1-py3-none-any.whl.metadata (1.9 kB)
+Requirement already satisfied: starlette<1.0.0,>=0.30.0 in ./venv/lib/python3.12/site-packages (from prometheus-fastapi-instrumentator) (0.50.0)
+Requirement already satisfied: anyio<5,>=3.6.2 in ./venv/lib/python3.12/site-packages (from starlette<1.0.0,>=0.30.0->prometheus-fastapi-instrumentator) (4.11.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./venv/lib/python3.12/site-packages (from starlette<1.0.0,>=0.30.0->prometheus-fastapi-instrumentator) (4.15.0)
+Requirement already satisfied: idna>=2.8 in ./venv/lib/python3.12/site-packages (from anyio<5,>=3.6.2->starlette<1.0.0,>=0.30.0->prometheus-fastapi-instrumentator) (3.11)
+Requirement already satisfied: sniffio>=1.1 in ./venv/lib/python3.12/site-packages (from anyio<5,>=3.6.2->starlette<1.0.0,>=0.30.0->prometheus-fastapi-instrumentator) (1.3.1)
+Downloading prometheus_fastapi_instrumentator-7.1.0-py3-none-any.whl (19 kB)
+Downloading prometheus_client-0.23.1-py3-none-any.whl (61 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.1/61.1 kB 1.2 MB/s eta 0:00:00
+Installing collected packages: prometheus-client, prometheus-fastapi-instrumentator
+Successfully installed prometheus-client-0.23.1 prometheus-fastapi-instrumentator-7.1.0

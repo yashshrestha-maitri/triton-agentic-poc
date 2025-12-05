@@ -1,0 +1,41 @@
+# Grafana Datasources Configuration
+#
+# Auto-provisions Prometheus and Loki datasources when Grafana starts
+
+apiVersion: 1
+
+datasources:
+  # =============================================================================
+  # Prometheus - Metrics Data Source
+  # =============================================================================
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    jsonData:
+      httpMethod: POST
+      timeInterval: 15s
+      queryTimeout: 60s
+      # Enable Exemplars for tracing integration (optional)
+      exemplarTraceIdDestinations:
+        - name: traceID
+          datasourceUid: loki
+    editable: false
+
+  # =============================================================================
+  # Loki - Logs Data Source
+  # =============================================================================
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://loki:3100
+    jsonData:
+      maxLines: 1000
+      derivedFields:
+        # Link traces from logs (if using distributed tracing)
+        - datasourceUid: prometheus
+          matcherRegex: "traceID=(\\w+)"
+          name: TraceID
+          url: "$${__value.raw}"
+    editable: false
