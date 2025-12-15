@@ -84,6 +84,83 @@ All modes (A1, A2, B) generate a standardized JSON structure containing:
 
 ---
 
+##### ROI Model Architecture (New Alternative Approach)
+**Triton Integration Point** - **Latest System Evolution**
+
+The Triton Platform has evolved to support an alternative approach using **quantitative ROI Models** instead of qualitative value propositions. This represents a fundamental architectural shift.
+
+###### The Architectural Shift
+
+| Aspect | Old: Value Propositions | New: ROI Models |
+|--------|------------------------|-----------------|
+| **Nature** | Qualitative descriptions | Quantitative calculations |
+| **Input** | General value prop text | ROI Story (PDF/Markdown/SQL) |
+| **Processing** | Text analysis | Mathematical model building |
+| **Classification** | None | 13 distinct ROI Model Types (B1-B13) |
+| **Variables** | Hardcoded in templates | Dynamic, extracted from ROI Story |
+| **Formulas** | None | Mathematical formulas for calculations |
+| **Output** | Static templates | Data-driven dashboards with live calculations |
+
+###### When to Use ROI Models vs Value Propositions
+
+**Use ROI Models when**:
+- Client provides ROI Story documents (ROI whitepapers, calculation methodologies)
+- Mathematical precision is required for ROI calculations
+- Client has specific formulas and variables to implement
+- Need data-driven, calculable dashboards
+
+**Use Value Propositions when**:
+- Client provides qualitative marketing materials
+- Focus is on messaging and positioning
+- No specific ROI calculation methodology available
+- Quick setup without mathematical modeling
+
+###### ROI Model Integration into Step 1.2
+
+When using ROI Model approach in Step 1.2:
+
+**Mode A: Research-Based** becomes:
+1. **WebSearchAgent** researches company (15-25 searches)
+2. **ROI Classification Agent** identifies which of 13 ROI Model Types applies
+3. **ROI Model Builder Agent** generates quantitative model with:
+   - Variables (baseline costs, targets, intervention parameters)
+   - Formulas (ROI calculations, payback periods, savings projections)
+   - SQL components (queries for data extraction)
+   - Configurable parameters (adjustable by users)
+
+**Mode B: Collateral-Based** becomes:
+1. User uploads **ROI Story document** (PDF/Markdown/SQL)
+2. **DocumentAnalysisAgent** extracts ROI components
+3. **ROI Classification Agent** determines model type (B1-B13)
+4. **ROI Model Builder Agent** generates complete model
+
+**Output**: ROI Model JSON (50KB structure) instead of Value Proposition JSON
+
+**Three-Repository Architecture**:
+The ROI Model system spans three repositories:
+- `mare-triton-research-prompts`: 7,641 lines of prompts (B1-B13 model generation)
+- `triton-agentic`: Backend execution engine (this repository)
+- `mare-frontend`: UI presentation layer
+
+**13 ROI Model Types** (B1-B13):
+1. B1: Unit Price Optimization
+2. B2: Site of Care Shift
+3. B3: Provider Steering
+4. B4: Payment Integrity
+5. B5: Low-Value Utilization Reduction
+6. B6: Medical Management
+7. B7: Episode Optimization
+8. B8: Out-of-Network Mitigation
+9. B9: Leakage Recapture
+10. B10: Pharmacy Optimization
+11. B11: Supply Chain Validation
+12. B12: Admin Error Reduction
+13. B13: Incentive Steerage
+
+**Detailed Reference**: See [ROI_MODEL_RESEARCH_FLOW_UPDATED.md](./ROI_MODEL_RESEARCH_FLOW_UPDATED.md) for complete ROI Model system architecture, prompts, and three-repository integration.
+
+---
+
 #### Step 1.3: Value Proposition Review & Refinement (Iterative Loop)
 **Triton Integration Point**
 

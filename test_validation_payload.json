@@ -1,0 +1,52 @@
+{
+  "result_type": "web_search",
+  "result_data": {
+    "searches_performed": 10,
+    "queries": ["Livongo Health overview", "Livongo ROI outcomes"],
+    "company_overview": {
+      "name": "Livongo Health",
+      "description": "Digital health company for diabetes management",
+      "mission": "Empower people with chronic conditions",
+      "target_markets": ["Employers", "Health Plans"],
+      "website": "https://www.livongo.com"
+    },
+    "value_propositions": [
+      {
+        "name": "Cost Reduction",
+        "description": "Reduce diabetes-related costs",
+        "evidence_type": "explicit",
+        "supporting_sources": ["https://livongo.com"],
+        "confidence": "high"
+      }
+    ],
+    "clinical_outcomes": [
+      {
+        "outcome": "HbA1c reduction",
+        "metric_value": "0.8% reduction",
+        "evidence_type": "published_study",
+        "source": "https://pubmed.com",
+        "confidence": "high"
+      }
+    ],
+    "roi_framework": {
+      "typical_roi_range": "300-400%",
+      "payback_period": "12-18 months",
+      "cost_savings_areas": ["Reduced complications"],
+      "evidence_quality": "high",
+      "supporting_sources": ["https://livongo.com"]
+    },
+    "competitive_positioning": {
+      "main_competitors": ["Omada Health", "Virta Health"],
+      "unique_advantages": ["AI-powered insights"],
+      "market_differentiators": ["Real-time coaching"],
+      "market_position": "Market leader"
+    },
+    "target_audiences": ["Employer", "Health Plan"],
+    "sources": ["https://livongo.com"],
+    "research_mode": "autonomous",
+    "confidence_score": 0.85,
+    "missing_information": [],
+    "assumptions_made": [],
+    "research_timestamp": "2025-01-15T12:00:00Z"
+  }
+}

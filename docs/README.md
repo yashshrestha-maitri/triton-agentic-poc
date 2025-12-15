@@ -6,6 +6,34 @@ Complete documentation for the Triton Agentic dashboard template generation syst
 
 ## 📚 Documentation Index
 
+### Platform Overview
+
+**⭐ START HERE for complete system understanding**
+
+- **[TRITON_COMPLETE_FLOW.md](./TRITON_COMPLETE_FLOW.md)** - **Master Reference Document** ⭐
+  - Complete system architecture (ARGO + Triton + MARE)
+  - 6-step workflow overview
+  - ROI Model integration explained
+  - Three-repository architecture
+  - Quick reference guide with links to all detailed docs
+
+- **[TRITON_PLATFORM_WORKFLOW.md](./TRITON_PLATFORM_WORKFLOW.md)** - Detailed 6-step platform workflow
+  - Step 1: Client Management & Value Prop Setup (Triton)
+  - Step 2: Prospect Creation & Alignment (Triton)
+  - Step 3: Prospect Data Upload & Processing (ARGO)
+  - Step 4: Value Prop Data Generation (Triton Analytics Team)
+  - Step 5: ROI Dashboard Data Generation (Triton Analytics Team)
+  - Step 6: MARE Application - Reports & Presentation
+  - ROI Model Architecture integration section (NEW)
+
+- **[ROI_MODEL_RESEARCH_FLOW_UPDATED.md](./ROI_MODEL_RESEARCH_FLOW_UPDATED.md)** - ROI Model system architecture (v3.0)
+  - Three-repository integration (mare-triton-research-prompts, triton-agentic, mare-frontend)
+  - 13 ROI Model Types (B1-B13) with classification
+  - Prompt engineering system (7,641 lines of prompts)
+  - Model builder agent workflows
+  - Complete validation pipeline
+  - End-to-end ROI model generation flow
+
 ### Getting Started
 
 - **[QUICKSTART.md](./QUICKSTART.md)** - Quick setup and first template generation
@@ -22,6 +50,42 @@ Complete documentation for the Triton Agentic dashboard template generation syst
   - What `/results` endpoint provides
   - Where generated data is stored
   - How synthetic data generation works
+
+#### Research Agents
+- **[RESEARCH_AGENT_FLOW.md](./RESEARCH_AGENT_FLOW.md)** - Complete research agent system with 19 Mermaid diagrams
+  - WebSearchAgent detailed flow (web search, autonomous/manual modes)
+  - DocumentAnalysisAgent detailed flow (PDF/DOCX/TXT analysis)
+  - API layer architecture and job management
+  - 4-layer validation pipeline with retry logic
+  - Tool integration (Google search, web scraper, S3 reader)
+  - Data models and component specifications
+
+- **[WEB_SEARCH_QUICKSTART.md](./WEB_SEARCH_QUICKSTART.md)** - Quick start guide (START HERE!)
+  - Check current search provider
+  - 2-minute setup for free search
+  - Testing instructions
+
+- **[WEB_SEARCH_SETUP.md](./WEB_SEARCH_SETUP.md)** - Detailed setup guide
+  - DuckDuckGo setup (free)
+  - Tavily setup (premium)
+  - Troubleshooting and testing
+
+- **[WEB_SEARCH_SOLUTIONS.md](./WEB_SEARCH_SOLUTIONS.md)** - Complete comparison guide
+  - Why you need web search (vs mock mode)
+  - Tavily vs alternatives comparison
+  - Open source options (DuckDuckGo, SearXNG, Jina Reader)
+  - Building custom search solution
+  - Cost comparison and recommendation matrix
+
+- **[RESEARCH_API_GUIDE.md](./RESEARCH_API_GUIDE.md)** - Research API reference
+  - Endpoint specifications
+  - Request/response examples
+  - Python client usage
+
+- **[RESEARCH_API_IMPLEMENTATION_COMPLETE.md](./RESEARCH_API_IMPLEMENTATION_COMPLETE.md)** - Implementation status
+  - Completed components
+  - Integration guide
+  - Next steps
 
 #### Prospect Data System
 - **[PROSPECT_DATA_GENERATION.md](./PROSPECT_DATA_GENERATION.md)** - Prospect dashboard data generation
@@ -72,9 +136,11 @@ Complete documentation for the Triton Agentic dashboard template generation syst
 
 ### For New Developers
 
-1. Start with [QUICKSTART.md](./QUICKSTART.md)
-2. Review [API_README.md](./API_README.md) for API overview
-3. Read [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) to understand data flow
+1. **⭐ Start with [TRITON_COMPLETE_FLOW.md](./TRITON_COMPLETE_FLOW.md)** - Master overview of entire system
+2. Review [TRITON_PLATFORM_WORKFLOW.md](./TRITON_PLATFORM_WORKFLOW.md) - Detailed 6-step workflow
+3. Check [QUICKSTART.md](./QUICKSTART.md) for hands-on setup
+4. Read [API_README.md](./API_README.md) for API overview
+5. Understand [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) for data storage
 
 ### For DevOps/Infrastructure
 
@@ -90,9 +156,13 @@ Complete documentation for the Triton Agentic dashboard template generation syst
 
 ### For Backend Developers
 
-1. [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) - System architecture
-2. [PROSPECT_DATA_GENERATION.md](./PROSPECT_DATA_GENERATION.md) - Data generation logic
-3. [MESSAGE_BROKER_IMPLEMENTATION.md](./MESSAGE_BROKER_IMPLEMENTATION.md) - Event system design
+1. **⭐ [TRITON_COMPLETE_FLOW.md](./TRITON_COMPLETE_FLOW.md)** - System architecture overview
+2. [TRITON_PLATFORM_WORKFLOW.md](./TRITON_PLATFORM_WORKFLOW.md) - Complete platform workflow
+3. [ROI_MODEL_RESEARCH_FLOW_UPDATED.md](./ROI_MODEL_RESEARCH_FLOW_UPDATED.md) - ROI Model architecture
+4. [RESEARCH_AGENT_FLOW.md](./RESEARCH_AGENT_FLOW.md) - Research agent detailed flows
+5. [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) - Data storage and retrieval
+6. [PROSPECT_DATA_GENERATION.md](./PROSPECT_DATA_GENERATION.md) - Data generation logic
+7. [MESSAGE_BROKER_IMPLEMENTATION.md](./MESSAGE_BROKER_IMPLEMENTATION.md) - Event system design
 
 ---
 
@@ -195,9 +265,17 @@ triton-agentic/
 ├── CLAUDE.md                          # Claude Code instructions
 ├── docs/                              # All documentation here
 │   ├── README.md                      # This file
+│   │
+│   ├── TRITON_COMPLETE_FLOW.md        # ⭐ Master reference document (NEW)
+│   ├── TRITON_PLATFORM_WORKFLOW.md    # 6-step platform workflow (NEW)
+│   ├── ROI_MODEL_RESEARCH_FLOW_UPDATED.md  # ROI Model architecture v3.0 (NEW)
+│   │
 │   ├── QUICKSTART.md
 │   ├── API_README.md
 │   ├── DATA_FLOW_EXPLANATION.md
+│   ├── RESEARCH_AGENT_FLOW.md         # Research agent flows
+│   ├── RESEARCH_API_GUIDE.md          # Research API reference
+│   ├── RESEARCH_API_IMPLEMENTATION_COMPLETE.md  # Implementation status
 │   ├── PROSPECT_DATA_GENERATION.md
 │   ├── PROSPECT_DASHBOARD_SYSTEM.md
 │   ├── MESSAGE_BROKER_IMPLEMENTATION.md

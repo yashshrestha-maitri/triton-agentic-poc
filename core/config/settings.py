@@ -83,6 +83,46 @@ class ModelConfig(BaseSettings):
 class KnowledgeConfig(BaseSettings):
     """Knowledge base configuration."""
 
+class PromptRepositoryConfig(BaseSettings):
+    """Prompt repository configuration for ROI model generation."""
+    model_config = {"env_file": ".env", "case_sensitive": False, "extra": "ignore"}
+
+    # Prompt repository path
+    prompts_repo_path: Optional[str] = Field(default=None, env="PROMPTS_REPO_PATH")
+
+    @property
+    def model_prompts_dir(self) -> Path:
+        """Get directory containing ROI model prompts (B1-B13)."""
+        if self.prompts_repo_path:
+            base_path = Path(self.prompts_repo_path)
+        else:
+            # Default: assume mare-triton-research-prompts is sibling directory
+            base_path = Path(__file__).parent.parent.parent.parent / "mare-triton-research-prompts"
+
+        prompts_dir = base_path / "prompts" / "roi_models"
+
+        if not prompts_dir.exists():
+            # Fallback to local prompts directory
+            prompts_dir = Path(__file__).parent.parent.parent / "prompts" / "roi_models"
+
+        return prompts_dir
+
+    @property
+    def classification_prompt_path(self) -> Path:
+        """Get path to ROI classification prompt."""
+        if self.prompts_repo_path:
+            base_path = Path(self.prompts_repo_path)
+        else:
+            base_path = Path(__file__).parent.parent.parent.parent / "mare-triton-research-prompts"
+
+        prompt_path = base_path / "prompts" / "roi_type.md"
+
+        if not prompt_path.exists():
+            # Fallback to local templates
+            prompt_path = Path(__file__).parent.parent.parent / "agents" / "templates" / "roi_classification_instructions.md"
+
+        return prompt_path
+
 class MonitoringConfig(BaseSettings):
     """Monitoring and observability configuration."""
     model_config = {"env_file": ".env", "case_sensitive": False, "extra": "ignore"}
@@ -137,6 +177,7 @@ class MareConfig(BaseSettings):
     database: DatabaseConfig = Field(default_factory=DatabaseConfig)
     redshift: RedshiftConfig = Field(default_factory=RedshiftConfig)
     models: ModelConfig = Field(default_factory=ModelConfig)
+    prompts: PromptRepositoryConfig = Field(default_factory=PromptRepositoryConfig)
     monitoring: MonitoringConfig = Field(default_factory=MonitoringConfig)
     celery: CeleryConfig = Field(default_factory=CeleryConfig)
 

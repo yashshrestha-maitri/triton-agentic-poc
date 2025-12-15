@@ -21,7 +21,7 @@ from fastapi.exceptions import RequestValidationError
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from api.routes import templates, jobs, clients, prospect_data
+from api.routes import templates, jobs, clients, prospect_data, research, roi_models
 from api.models.responses import ErrorResponse, HealthCheckResponse
 from core.database import init_db, close_db, health_check as db_health_check
 from core.monitoring.logger import get_logger
@@ -191,6 +191,8 @@ app.include_router(clients.router)
 app.include_router(jobs.router)
 app.include_router(templates.router)
 app.include_router(prospect_data.router)
+app.include_router(research.router)
+app.include_router(roi_models.router)
 
 
 # Startup event

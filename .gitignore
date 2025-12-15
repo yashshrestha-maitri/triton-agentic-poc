@@ -63,3 +63,7 @@ htmlcov/
 
 # Mac
 .DS_Store
+
+# Node.js (for documentation tools)
+node_modules/
+package-lock.json
