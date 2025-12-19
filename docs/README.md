@@ -4,20 +4,40 @@ Complete documentation for the Triton Agentic dashboard template generation syst
 
 ---
 
+## 📁 Documentation Structure
+
+Documentation is organized into **four main folders** based on purpose:
+
+| Folder | Purpose | Status |
+|--------|---------|--------|
+| **[architecture-current/](./architecture-current/)** | ROI Model-driven architecture (current) | ✅ Active |
+| **[architecture-legacy/](./architecture-legacy/)** | Value proposition-based architecture (old) | 📚 Reference Only |
+| **[features/](./features/)** | Feature-specific documentation (architecture-agnostic) | ✅ Active |
+| **[operations/](./operations/)** | Setup, deployment, testing, and operations | ✅ Active |
+
+### Quick Navigation
+
+- **New to the project?** Start with [architecture-current/](./architecture-current/)
+- **Need to deploy?** Go to [operations/](./operations/)
+- **Looking for a specific feature?** Check [features/](./features/)
+- **Historical context?** See [architecture-legacy/](./architecture-legacy/)
+
+---
+
 ## 📚 Documentation Index
 
 ### Platform Overview
 
 **⭐ START HERE for complete system understanding**
 
-- **[TRITON_COMPLETE_FLOW.md](./TRITON_COMPLETE_FLOW.md)** - **Master Reference Document** ⭐
+- **[TRITON_COMPLETE_FLOW.md](./architecture-current/TRITON_COMPLETE_FLOW.md)** - **Master Reference Document** ⭐
   - Complete system architecture (ARGO + Triton + MARE)
   - 6-step workflow overview
   - ROI Model integration explained
   - Three-repository architecture
   - Quick reference guide with links to all detailed docs
 
-- **[TRITON_PLATFORM_WORKFLOW.md](./TRITON_PLATFORM_WORKFLOW.md)** - Detailed 6-step platform workflow
+- **[TRITON_PLATFORM_WORKFLOW.md](./architecture-current/TRITON_PLATFORM_WORKFLOW.md)** - Detailed 6-step platform workflow
   - Step 1: Client Management & Value Prop Setup (Triton)
   - Step 2: Prospect Creation & Alignment (Triton)
   - Step 3: Prospect Data Upload & Processing (ARGO)
@@ -26,7 +46,7 @@ Complete documentation for the Triton Agentic dashboard template generation syst
   - Step 6: MARE Application - Reports & Presentation
   - ROI Model Architecture integration section (NEW)
 
-- **[ROI_MODEL_RESEARCH_FLOW_UPDATED.md](./ROI_MODEL_RESEARCH_FLOW_UPDATED.md)** - ROI Model system architecture (v3.0)
+- **[ROI_MODEL_RESEARCH_FLOW_UPDATED.md](./architecture-current/ROI_MODEL_RESEARCH_FLOW_UPDATED.md)** - ROI Model system architecture (v3.0)
   - Three-repository integration (mare-triton-research-prompts, triton-agentic, mare-frontend)
   - 13 ROI Model Types (B1-B13) with classification
   - Prompt engineering system (7,641 lines of prompts)
@@ -36,23 +56,23 @@ Complete documentation for the Triton Agentic dashboard template generation syst
 
 ### Getting Started
 
-- **[QUICKSTART.md](./QUICKSTART.md)** - Quick setup and first template generation
-- **[DOCKER_SETUP.md](./DOCKER_SETUP.md)** - Docker containerization and deployment guide
+- **[QUICKSTART.md](./operations/QUICKSTART.md)** - Quick setup and first template generation
+- **[DOCKER_SETUP.md](./operations/DOCKER_SETUP.md)** - Docker containerization and deployment guide
 
 ### API Documentation
 
-- **[API_README.md](./API_README.md)** - REST API reference and endpoints
+- **[API_README.md](./operations/API_README.md)** - REST API reference and endpoints
 
 ### Core Features
 
 #### Template Generation
-- **[DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md)** - Complete data flow from templates to widget data
+- **[DATA_FLOW_EXPLANATION.md](./features/DATA_FLOW_EXPLANATION.md)** - Complete data flow from templates to widget data
   - What `/results` endpoint provides
   - Where generated data is stored
   - How synthetic data generation works
 
 #### Research Agents
-- **[RESEARCH_AGENT_FLOW.md](./RESEARCH_AGENT_FLOW.md)** - Complete research agent system with 19 Mermaid diagrams
+- **[RESEARCH_AGENT_FLOW.md](./architecture-current/RESEARCH_AGENT_FLOW.md)** - Complete research agent system with 19 Mermaid diagrams
   - WebSearchAgent detailed flow (web search, autonomous/manual modes)
   - DocumentAnalysisAgent detailed flow (PDF/DOCX/TXT analysis)
   - API layer architecture and job management
@@ -60,71 +80,121 @@ Complete documentation for the Triton Agentic dashboard template generation syst
   - Tool integration (Google search, web scraper, S3 reader)
   - Data models and component specifications
 
-- **[WEB_SEARCH_QUICKSTART.md](./WEB_SEARCH_QUICKSTART.md)** - Quick start guide (START HERE!)
+- **[WEB_SEARCH_QUICKSTART.md](./architecture-current/WEB_SEARCH_QUICKSTART.md)** - Quick start guide (START HERE!)
   - Check current search provider
   - 2-minute setup for free search
   - Testing instructions
 
-- **[WEB_SEARCH_SETUP.md](./WEB_SEARCH_SETUP.md)** - Detailed setup guide
+- **[WEB_SEARCH_SETUP.md](./architecture-current/WEB_SEARCH_SETUP.md)** - Detailed setup guide
   - DuckDuckGo setup (free)
   - Tavily setup (premium)
   - Troubleshooting and testing
 
-- **[WEB_SEARCH_SOLUTIONS.md](./WEB_SEARCH_SOLUTIONS.md)** - Complete comparison guide
+- **[WEB_SEARCH_SOLUTIONS.md](./architecture-current/WEB_SEARCH_SOLUTIONS.md)** - Complete comparison guide
   - Why you need web search (vs mock mode)
   - Tavily vs alternatives comparison
   - Open source options (DuckDuckGo, SearXNG, Jina Reader)
   - Building custom search solution
   - Cost comparison and recommendation matrix
 
-- **[RESEARCH_API_GUIDE.md](./RESEARCH_API_GUIDE.md)** - Research API reference
+- **[RESEARCH_API_GUIDE.md](./architecture-current/RESEARCH_API_GUIDE.md)** - Research API reference
   - Endpoint specifications
   - Request/response examples
   - Python client usage
 
-- **[RESEARCH_API_IMPLEMENTATION_COMPLETE.md](./RESEARCH_API_IMPLEMENTATION_COMPLETE.md)** - Implementation status
+- **[RESEARCH_API_IMPLEMENTATION_COMPLETE.md](./architecture-current/RESEARCH_API_IMPLEMENTATION_COMPLETE.md)** - Implementation status
   - Completed components
   - Integration guide
   - Next steps
 
+#### Document Processing
+- **[HYBRID_PDF_PROCESSING_GUIDE.md](./operations/HYBRID_PDF_PROCESSING_GUIDE.md)** - Hybrid PDF processing implementation ⭐ NEW
+  - Traditional text extraction vs Claude Vision API
+  - Text quality assessment algorithm (0-100 score)
+  - Cost analysis and optimization (67% cost savings)
+  - Execution time tracking and metrics
+  - Complete implementation with code examples
+  - Testing strategies and troubleshooting
+
+#### Industry Benchmark Data
+- **[INDUSTRY_BENCHMARK_DATA_GENERATION.md](./features/INDUSTRY_BENCHMARK_DATA_GENERATION.md)** - Industry benchmark data generation ⭐ NEW
+  - Four data generation methods (web search, APIs, internal data, hybrid)
+  - Complete workflows with visual diagrams
+  - Stale Benchmark Data P0 issue (1-day fix)
+  - Data source comparison (CMS, CDC, HEDIS)
+  - Implementation roadmap (MVP to Enterprise)
+  - Real-world diabetes management ROI example
+
+#### Hallucination Prevention & Data Lineage
+- **[EXTRACTION_HALLUCINATION_AND_LINEAGE_PLAN.md](./EXTRACTION_HALLUCINATION_AND_LINEAGE_PLAN.md)** - Complete implementation plan ⭐ NEW
+  - 5-layer validation pipeline (adds source verification)
+  - Data lineage tracking system (10-25 fields)
+  - Storage requirements and decision framework
+  - PostgreSQL vs Clickhouse analysis
+  - Implementation phases (MVP to Enterprise)
+  - Cost analysis and optimization strategies
+
+- **[DATA_LINEAGE_STEP_BY_STEP.md](./DATA_LINEAGE_STEP_BY_STEP.md)** - Step-by-step lineage guide ⭐ NEW
+  - What lineage data gets added by each agent
+  - DocumentAnalysisAgent → WebSearchAgent → ROI Model → Template → Dashboard
+  - Field population timeline with code examples
+  - Complete audit trail queries
+  - Bi-directional traceability workflows
+
+- **[HALLUCINATION_BASELINE_TEST_REPORT.md](./HALLUCINATION_BASELINE_TEST_REPORT.md)** - Baseline test results
+  - 0% actual hallucination rate (9/9 correct extractions)
+  - 4-layer validation system performance
+  - API endpoint documentation for document analysis
+  - Why Layer 5 verification is still critical
+
+- **[ADVERSARIAL_HALLUCINATION_TEST_REPORT.md](./ADVERSARIAL_HALLUCINATION_TEST_REPORT.md)** - Adversarial test results
+  - Tests with hallucination traps (contradictions, vague language)
+  - Agent resistance to intentional misinformation
+  - Edge case handling and retry logic
+
+- **[HALLUCINATION_TESTING_GUIDE.md](./HALLUCINATION_TESTING_GUIDE.md)** - Testing methodology
+  - How to create test documents
+  - Ground truth validation
+  - Automated comparison logic
+
 #### Prospect Data System
-- **[PROSPECT_DATA_GENERATION.md](./PROSPECT_DATA_GENERATION.md)** - Prospect dashboard data generation
+- **[PROSPECT_DATA_GENERATION.md](./features/PROSPECT_DATA_GENERATION.md)** - Prospect dashboard data generation
   - Automatic data generation during template creation
   - Database schema and architecture
   - API endpoints and testing procedures
 
-- **[PROSPECT_DASHBOARD_SYSTEM.md](./PROSPECT_DASHBOARD_SYSTEM.md)** - Complete prospect dashboard system overview
+- **[PROSPECT_DASHBOARD_SYSTEM.md](./features/PROSPECT_DASHBOARD_SYSTEM.md)** - Complete prospect dashboard system overview
   - System architecture
   - Data models and relationships
   - Frontend integration guide
 
 #### Real-Time Events (Message Broker)
-- **[MESSAGE_BROKER_IMPLEMENTATION.md](./MESSAGE_BROKER_IMPLEMENTATION.md)** - Redis Pub/Sub event system
+- **[MESSAGE_BROKER_IMPLEMENTATION.md](./features/MESSAGE_BROKER_IMPLEMENTATION.md)** - Redis Pub/Sub event system
   - Implementation details
   - How it eliminates HTTP polling
   - API usage examples
   - Performance benefits (99% reduction in requests)
 
-- **[MESSAGE_BROKER_TESTING.md](./MESSAGE_BROKER_TESTING.md)** - Testing guide for message broker
+- **[MESSAGE_BROKER_TESTING.md](./features/MESSAGE_BROKER_TESTING.md)** - Testing guide for message broker
   - 7 comprehensive test scenarios
   - Performance comparison
   - Troubleshooting guide
 
 ### Operations & Monitoring
 
-- **[MONITORING_SETUP.md](./MONITORING_SETUP.md)** - Prometheus, Grafana, and Flower setup
+- **[MONITORING_SETUP.md](./operations/MONITORING_SETUP.md)** - Prometheus, Grafana, and Flower setup
   - Metrics collection
   - Dashboard configuration
   - Alerting rules
 
-- **[TESTING_AND_MONITORING_GUIDE.md](./TESTING_AND_MONITORING_GUIDE.md)** - Testing and monitoring best practices
+- **[TESTING_AND_MONITORING_GUIDE.md](./operations/TESTING_AND_MONITORING_GUIDE.md)** - Testing and monitoring best practices
   - Integration testing
   - Load testing
   - Production monitoring
 
 ### Meta Documentation
 
-- **[DOCUMENTATION_ORGANIZATION.md](./DOCUMENTATION_ORGANIZATION.md)** - How documentation is organized
+- **[DOCUMENTATION_ORGANIZATION.md](./operations/DOCUMENTATION_ORGANIZATION.md)** - How documentation is organized
   - Folder structure conventions
   - File naming standards
   - Creating new documentation
@@ -136,33 +206,36 @@ Complete documentation for the Triton Agentic dashboard template generation syst
 
 ### For New Developers
 
-1. **⭐ Start with [TRITON_COMPLETE_FLOW.md](./TRITON_COMPLETE_FLOW.md)** - Master overview of entire system
-2. Review [TRITON_PLATFORM_WORKFLOW.md](./TRITON_PLATFORM_WORKFLOW.md) - Detailed 6-step workflow
-3. Check [QUICKSTART.md](./QUICKSTART.md) for hands-on setup
-4. Read [API_README.md](./API_README.md) for API overview
-5. Understand [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) for data storage
+1. **⭐ Start with [TRITON_COMPLETE_FLOW.md](./architecture-current/TRITON_COMPLETE_FLOW.md)** - Master overview of entire system
+2. Review [TRITON_PLATFORM_WORKFLOW.md](./architecture-current/TRITON_PLATFORM_WORKFLOW.md) - Detailed 6-step workflow
+3. Check [QUICKSTART.md](./operations/QUICKSTART.md) for hands-on setup
+4. Read [API_README.md](./operations/API_README.md) for API overview
+5. Understand [DATA_FLOW_EXPLANATION.md](./features/DATA_FLOW_EXPLANATION.md) for data storage
 
 ### For DevOps/Infrastructure
 
-1. [DOCKER_SETUP.md](./DOCKER_SETUP.md) - Container deployment
-2. [MONITORING_SETUP.md](./MONITORING_SETUP.md) - Observability stack
-3. [MESSAGE_BROKER_TESTING.md](./MESSAGE_BROKER_TESTING.md) - Verify event system
+1. [DOCKER_SETUP.md](./operations/DOCKER_SETUP.md) - Container deployment
+2. [MONITORING_SETUP.md](./operations/MONITORING_SETUP.md) - Observability stack
+3. [MESSAGE_BROKER_TESTING.md](./features/MESSAGE_BROKER_TESTING.md) - Verify event system
 
 ### For Frontend Developers
 
-1. [PROSPECT_DASHBOARD_SYSTEM.md](./PROSPECT_DASHBOARD_SYSTEM.md) - Frontend integration
-2. [API_README.md](./API_README.md) - API endpoints
-3. [MESSAGE_BROKER_IMPLEMENTATION.md](./MESSAGE_BROKER_IMPLEMENTATION.md) - Real-time updates via SSE
+1. [PROSPECT_DASHBOARD_SYSTEM.md](./features/PROSPECT_DASHBOARD_SYSTEM.md) - Frontend integration
+2. [API_README.md](./operations/API_README.md) - API endpoints
+3. [MESSAGE_BROKER_IMPLEMENTATION.md](./features/MESSAGE_BROKER_IMPLEMENTATION.md) - Real-time updates via SSE
 
 ### For Backend Developers
 
-1. **⭐ [TRITON_COMPLETE_FLOW.md](./TRITON_COMPLETE_FLOW.md)** - System architecture overview
-2. [TRITON_PLATFORM_WORKFLOW.md](./TRITON_PLATFORM_WORKFLOW.md) - Complete platform workflow
-3. [ROI_MODEL_RESEARCH_FLOW_UPDATED.md](./ROI_MODEL_RESEARCH_FLOW_UPDATED.md) - ROI Model architecture
-4. [RESEARCH_AGENT_FLOW.md](./RESEARCH_AGENT_FLOW.md) - Research agent detailed flows
-5. [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) - Data storage and retrieval
-6. [PROSPECT_DATA_GENERATION.md](./PROSPECT_DATA_GENERATION.md) - Data generation logic
-7. [MESSAGE_BROKER_IMPLEMENTATION.md](./MESSAGE_BROKER_IMPLEMENTATION.md) - Event system design
+1. **⭐ [TRITON_COMPLETE_FLOW.md](./architecture-current/TRITON_COMPLETE_FLOW.md)** - System architecture overview
+2. [TRITON_PLATFORM_WORKFLOW.md](./architecture-current/TRITON_PLATFORM_WORKFLOW.md) - Complete platform workflow
+3. [ROI_MODEL_RESEARCH_FLOW_UPDATED.md](./architecture-current/ROI_MODEL_RESEARCH_FLOW_UPDATED.md) - ROI Model architecture
+4. [RESEARCH_AGENT_FLOW.md](./architecture-current/RESEARCH_AGENT_FLOW.md) - Research agent detailed flows
+5. [DATA_FLOW_EXPLANATION.md](./features/DATA_FLOW_EXPLANATION.md) - Data storage and retrieval
+6. [INDUSTRY_BENCHMARK_DATA_GENERATION.md](./features/INDUSTRY_BENCHMARK_DATA_GENERATION.md) - Benchmark data generation
+7. [DATA_LINEAGE_STEP_BY_STEP.md](./DATA_LINEAGE_STEP_BY_STEP.md) - **Data lineage tracking (step-by-step)** ⭐ NEW
+8. [EXTRACTION_HALLUCINATION_AND_LINEAGE_PLAN.md](./EXTRACTION_HALLUCINATION_AND_LINEAGE_PLAN.md) - Hallucination prevention implementation
+9. [PROSPECT_DATA_GENERATION.md](./features/PROSPECT_DATA_GENERATION.md) - Data generation logic
+10. [MESSAGE_BROKER_IMPLEMENTATION.md](./features/MESSAGE_BROKER_IMPLEMENTATION.md) - Event system design
 
 ---
 
@@ -172,32 +245,34 @@ Complete documentation for the Triton Agentic dashboard template generation syst
 
 | Concept | Description | Doc |
 |---------|-------------|-----|
-| **Templates** | Dashboard layout configurations | [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) |
-| **Prospect Data** | Widget values for specific prospects | [PROSPECT_DATA_GENERATION.md](./PROSPECT_DATA_GENERATION.md) |
-| **Synthetic Data** | Auto-generated sample data | [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) |
-| **Message Broker** | Redis Pub/Sub for real-time events | [MESSAGE_BROKER_IMPLEMENTATION.md](./MESSAGE_BROKER_IMPLEMENTATION.md) |
-| **SSE** | Server-Sent Events for push notifications | [MESSAGE_BROKER_IMPLEMENTATION.md](./MESSAGE_BROKER_IMPLEMENTATION.md) |
+| **Templates** | Dashboard layout configurations | [DATA_FLOW_EXPLANATION.md](./features/DATA_FLOW_EXPLANATION.md) |
+| **Prospect Data** | Widget values for specific prospects | [PROSPECT_DATA_GENERATION.md](./features/PROSPECT_DATA_GENERATION.md) |
+| **Synthetic Data** | Auto-generated sample data | [DATA_FLOW_EXPLANATION.md](./features/DATA_FLOW_EXPLANATION.md) |
+| **Data Lineage** | Complete audit trail from document → extraction → ROI model → dashboard | [DATA_LINEAGE_STEP_BY_STEP.md](./DATA_LINEAGE_STEP_BY_STEP.md) ⭐ NEW |
+| **Message Broker** | Redis Pub/Sub for real-time events | [MESSAGE_BROKER_IMPLEMENTATION.md](./features/MESSAGE_BROKER_IMPLEMENTATION.md) |
+| **SSE** | Server-Sent Events for push notifications | [MESSAGE_BROKER_IMPLEMENTATION.md](./features/MESSAGE_BROKER_IMPLEMENTATION.md) |
 
 ### API Endpoints
 
 | Endpoint | Purpose | Doc |
 |----------|---------|-----|
-| `POST /clients/{id}/generate-templates` | Generate templates | [API_README.md](./API_README.md) |
-| `GET /jobs/{id}` | Check job status | [API_README.md](./API_README.md) |
-| `GET /jobs/{id}/subscribe` | SSE real-time updates | [MESSAGE_BROKER_IMPLEMENTATION.md](./MESSAGE_BROKER_IMPLEMENTATION.md) |
-| `GET /prospect-data/{id}` | Get widget data | [PROSPECT_DATA_GENERATION.md](./PROSPECT_DATA_GENERATION.md) |
-| `GET /templates/{id}` | Get template structure | [API_README.md](./API_README.md) |
+| `POST /clients/{id}/generate-templates` | Generate templates | [API_README.md](./operations/API_README.md) |
+| `GET /jobs/{id}` | Check job status | [API_README.md](./operations/API_README.md) |
+| `GET /jobs/{id}/subscribe` | SSE real-time updates | [MESSAGE_BROKER_IMPLEMENTATION.md](./features/MESSAGE_BROKER_IMPLEMENTATION.md) |
+| `GET /prospect-data/{id}` | Get widget data | [PROSPECT_DATA_GENERATION.md](./features/PROSPECT_DATA_GENERATION.md) |
+| `GET /templates/{id}` | Get template structure | [API_README.md](./operations/API_README.md) |
 
 ### Database Tables
 
 | Table | Purpose | Doc |
 |-------|---------|-----|
-| `clients` | Client information | [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) |
-| `value_propositions` | Client value props | [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) |
-| `dashboard_templates` | Template structures | [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) |
-| `prospects` | Dashboard viewers | [PROSPECT_DATA_GENERATION.md](./PROSPECT_DATA_GENERATION.md) |
-| `prospect_dashboard_data` | Widget values | [PROSPECT_DATA_GENERATION.md](./PROSPECT_DATA_GENERATION.md) |
-| `generation_jobs` | Async job tracking | [API_README.md](./API_README.md) |
+| `clients` | Client information | [DATA_FLOW_EXPLANATION.md](./features/DATA_FLOW_EXPLANATION.md) |
+| `value_propositions` | Client value props | [DATA_FLOW_EXPLANATION.md](./features/DATA_FLOW_EXPLANATION.md) |
+| `dashboard_templates` | Template structures | [DATA_FLOW_EXPLANATION.md](./features/DATA_FLOW_EXPLANATION.md) |
+| `prospects` | Dashboard viewers | [PROSPECT_DATA_GENERATION.md](./features/PROSPECT_DATA_GENERATION.md) |
+| `prospect_dashboard_data` | Widget values | [PROSPECT_DATA_GENERATION.md](./features/PROSPECT_DATA_GENERATION.md) |
+| `extraction_lineage` | Data provenance tracking | [DATA_LINEAGE_STEP_BY_STEP.md](./DATA_LINEAGE_STEP_BY_STEP.md) ⭐ NEW |
+| `generation_jobs` | Async job tracking | [API_README.md](./operations/API_README.md) |
 
 ---
 
@@ -261,28 +336,61 @@ When adding new features:
 
 ```
 triton-agentic/
-├── README.md                          # Main project README
-├── CLAUDE.md                          # Claude Code instructions
-├── docs/                              # All documentation here
-│   ├── README.md                      # This file
-│   │
-│   ├── TRITON_COMPLETE_FLOW.md        # ⭐ Master reference document (NEW)
-│   ├── TRITON_PLATFORM_WORKFLOW.md    # 6-step platform workflow (NEW)
-│   ├── ROI_MODEL_RESEARCH_FLOW_UPDATED.md  # ROI Model architecture v3.0 (NEW)
-│   │
-│   ├── QUICKSTART.md
-│   ├── API_README.md
-│   ├── DATA_FLOW_EXPLANATION.md
-│   ├── RESEARCH_AGENT_FLOW.md         # Research agent flows
-│   ├── RESEARCH_API_GUIDE.md          # Research API reference
-│   ├── RESEARCH_API_IMPLEMENTATION_COMPLETE.md  # Implementation status
-│   ├── PROSPECT_DATA_GENERATION.md
-│   ├── PROSPECT_DASHBOARD_SYSTEM.md
-│   ├── MESSAGE_BROKER_IMPLEMENTATION.md
-│   ├── MESSAGE_BROKER_TESTING.md
-│   ├── DOCKER_SETUP.md
-│   ├── MONITORING_SETUP.md
-│   └── TESTING_AND_MONITORING_GUIDE.md
+├── README.md                              # Main project README
+├── CLAUDE.md                              # Claude Code instructions
+│
+└── docs/                                  # All documentation here
+    ├── README.md                          # This file (main index)
+    │
+    ├── EXTRACTION_HALLUCINATION_AND_LINEAGE_PLAN.md  # ⭐ Lineage implementation plan
+    ├── DATA_LINEAGE_STEP_BY_STEP.md      # ⭐ Lineage step-by-step guide
+    ├── HALLUCINATION_BASELINE_TEST_REPORT.md  # Baseline test results
+    ├── ADVERSARIAL_HALLUCINATION_TEST_REPORT.md  # Adversarial test results
+    ├── HALLUCINATION_TESTING_GUIDE.md    # Testing methodology
+    │
+    ├── architecture-current/              # ✅ CURRENT ARCHITECTURE (ROI Models)
+    │   ├── README.md                      # Current architecture overview
+    │   ├── TRITON_COMPLETE_FLOW.md        # ⭐ Master reference document
+    │   ├── TRITON_PLATFORM_WORKFLOW.md    # 6-step platform workflow
+    │   ├── ROI_MODEL_RESEARCH_FLOW_UPDATED.md  # ROI Model architecture v3.0
+    │   ├── ROI_INTEGRATION_GUIDE.md
+    │   ├── RESEARCH_AGENT_FLOW.md         # Research agent detailed flows
+    │   ├── RESEARCH_API_GUIDE.md
+    │   ├── RESEARCH_API_IMPLEMENTATION_COMPLETE.md
+    │   ├── RESEARCH_AGENT_TEST_REPORT.md
+    │   ├── RESEARCH_API_TESTING_GUIDE.md
+    │   ├── WEB_SEARCH_IMPLEMENTATION_SUMMARY.md
+    │   ├── WEB_SEARCH_QUICKSTART.md
+    │   ├── WEB_SEARCH_SETUP.md
+    │   └── WEB_SEARCH_SOLUTIONS.md
+    │
+    ├── architecture-legacy/               # 📚 LEGACY ARCHITECTURE (Reference Only)
+    │   ├── README.md                      # Legacy architecture context
+    │   ├── VALUE_PROPOSITION_SYSTEM.md
+    │   ├── TRITON_ENGINEERING_SPEC.md
+    │   └── TRITON_IMPLEMENTATION_ROADMAP.md
+    │
+    ├── features/                          # ✅ FEATURE-SPECIFIC DOCS
+    │   ├── README.md                      # Feature documentation index
+    │   ├── PROSPECT_DATA_GENERATION.md
+    │   ├── PROSPECT_DASHBOARD_SYSTEM.md
+    │   ├── MESSAGE_BROKER_IMPLEMENTATION.md
+    │   ├── MESSAGE_BROKER_TESTING.md
+    │   ├── DATA_FLOW_EXPLANATION.md
+    │   ├── ANALYTICS_AND_DASHBOARD_DATA.md
+    │   ├── INDUSTRY_BENCHMARK_DATA_GENERATION.md  # ⭐ NEW
+    │   └── FOUNDATION_AND_INFRASTRUCTURE.md
+    │
+    └── operations/                        # ✅ OPERATIONS & DEPLOYMENT
+        ├── README.md                      # Operations guide index
+        ├── QUICKSTART.md
+        ├── API_README.md
+        ├── DOCKER_SETUP.md
+        ├── MONITORING_SETUP.md
+        ├── TESTING_AND_MONITORING_GUIDE.md
+        ├── SYSTEM_VERIFICATION_REPORT.md
+        ├── HYBRID_PDF_PROCESSING_GUIDE.md # Hybrid PDF processing
+        └── DOCUMENTATION_ORGANIZATION.md
 ```
 
 ---

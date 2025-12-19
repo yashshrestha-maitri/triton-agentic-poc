@@ -245,64 +245,126 @@ Generated templates are saved to `results/templates_{client_name}_{timestamp}.js
 
 ## Documentation Conventions
 
-**IMPORTANT: All documentation files (*.md) must be created in the `docs/` folder, NOT in the project root.**
+**IMPORTANT: All documentation files (*.md) must be created in the `docs/` folder structure, NOT in the project root.**
 
 ### Documentation Structure
+
+Documentation is organized into **four main folders** based on purpose:
+
 ```
 triton-agentic/
-├── README.md                    # Main project README (root only)
-├── CLAUDE.md                    # Claude Code instructions (root only)
-└── docs/                        # ALL other documentation goes here
-    ├── README.md                # Documentation index
-    ├── QUICKSTART.md
-    ├── API_README.md
-    ├── DATA_FLOW_EXPLANATION.md
-    ├── PROSPECT_DATA_GENERATION.md
-    ├── MESSAGE_BROKER_IMPLEMENTATION.md
-    └── ... (all other .md files)
+├── README.md                              # Main project README (root only)
+├── CLAUDE.md                              # Claude Code instructions (root only)
+│
+└── docs/                                  # All documentation here
+    ├── README.md                          # Main documentation index
+    │
+    ├── architecture-current/              # ✅ CURRENT ARCHITECTURE (ROI Models)
+    │   ├── README.md                      # Current architecture overview
+    │   ├── TRITON_COMPLETE_FLOW.md        # ⭐ Master reference
+    │   ├── ROI_MODEL_RESEARCH_FLOW_UPDATED.md
+    │   ├── RESEARCH_AGENT_FLOW.md         # Research agents
+    │   └── ... (ROI model & research docs)
+    │
+    ├── architecture-legacy/               # 📚 LEGACY (Reference Only)
+    │   ├── README.md                      # Legacy context
+    │   ├── VALUE_PROPOSITION_SYSTEM.md
+    │   └── ... (old architecture docs)
+    │
+    ├── features/                          # ✅ FEATURE-SPECIFIC DOCS
+    │   ├── README.md                      # Feature index
+    │   ├── PROSPECT_DATA_GENERATION.md
+    │   ├── MESSAGE_BROKER_IMPLEMENTATION.md
+    │   ├── DATA_FLOW_EXPLANATION.md
+    │   └── ... (architecture-agnostic features)
+    │
+    └── operations/                        # ✅ OPERATIONS & DEPLOYMENT
+        ├── README.md                      # Operations guide
+        ├── QUICKSTART.md
+        ├── API_README.md
+        ├── DOCKER_SETUP.md
+        └── ... (setup, testing, deployment)
 ```
 
 ### Rules for Documentation
 
-1. **New Documentation Files:**
-   - ALWAYS create in `docs/` folder: `docs/NEW_FEATURE.md`
+1. **New Documentation Files - Choose the Right Folder:**
+   - **Current Architecture** (ROI models, research agents): `docs/architecture-current/FILE.md`
+   - **Legacy Reference** (old value prop system): `docs/architecture-legacy/FILE.md`
+   - **Features** (architecture-agnostic): `docs/features/FILE.md`
+   - **Operations** (setup, deployment, testing): `docs/operations/FILE.md`
    - NEVER create in project root (except README.md and CLAUDE.md)
 
 2. **Naming Convention:**
    - Use UPPERCASE_SNAKE_CASE for documentation files
    - Be descriptive: `MESSAGE_BROKER_TESTING.md` not `TEST.md`
 
-3. **Update Index:**
-   - Add new docs to `docs/README.md` in appropriate section
+3. **Update Indexes:**
+   - Add new doc to subfolder `README.md` (e.g., `docs/features/README.md`)
+   - Add entry to main `docs/README.md` index
    - Update root `README.md` if major feature
 
 4. **Internal Links:**
-   - Use relative paths: `[Testing Guide](./MESSAGE_BROKER_TESTING.md)`
-   - From root: `[Docs](./docs/README.md)`
+   - Use relative paths from current location
+   - Example from root: `[Docs](./docs/README.md)`
+   - Example from subfolder: `[Feature](./features/DATA_FLOW.md)`
+   - Cross-folder: `[Operations](../operations/QUICKSTART.md)`
 
 ### Examples
 
 **✅ Correct:**
 ```bash
-# Create new feature documentation
-Write file: /home/yashrajshres/triton-agentic/docs/WEBHOOK_INTEGRATION.md
+# Create new ROI model documentation
+Write file: /home/yashrajshres/triton-agentic/docs/architecture-current/ROI_MODEL_BUILDER.md
 
-# Reference from root README
-[Webhook Integration](./docs/WEBHOOK_INTEGRATION.md)
+# Create new feature documentation
+Write file: /home/yashrajshres/triton-agentic/docs/features/CACHING_SYSTEM.md
+
+# Create new operations guide
+Write file: /home/yashrajshres/triton-agentic/docs/operations/KUBERNETES_DEPLOYMENT.md
+
+# Update appropriate README
+Edit file: /home/yashrajshres/triton-agentic/docs/architecture-current/README.md
 ```
 
 **❌ Incorrect:**
 ```bash
 # Don't create in root
-Write file: /home/yashrajshres/triton-agentic/WEBHOOK_INTEGRATION.md
+Write file: /home/yashrajshres/triton-agentic/ROI_MODEL_BUILDER.md
+
+# Don't create in wrong folder (architecture doc in features/)
+Write file: /home/yashrajshres/triton-agentic/docs/features/ROI_MODEL_BUILDER.md
 ```
 
 ### When Creating New Documentation
 
-1. Create file in `docs/` folder
-2. Add entry to `docs/README.md` index
-3. Optionally add to root `README.md` if major feature
-4. Use clear headings, code examples, and diagrams
+1. **Determine folder** based on content type:
+   - Current architecture? → `architecture-current/`
+   - Feature documentation? → `features/`
+   - Setup/deployment? → `operations/`
+   - Legacy reference? → `architecture-legacy/`
+
+2. **Create file** in appropriate subfolder
+
+3. **Update indexes:**
+   - Add to subfolder's `README.md`
+   - Add to main `docs/README.md`
+   - Update root `README.md` if major feature
+
+4. **Use proper formatting:**
+   - Clear headings (H1 for title, H2 for sections)
+   - Code examples with syntax highlighting
+   - Tables for reference data
+   - Diagrams where helpful
+
+### Documentation Folder Purpose Guide
+
+| Folder | When to Use | Examples |
+|--------|-------------|----------|
+| `architecture-current/` | ROI models, research agents, current system design | ROI_MODEL_BUILDER.md, RESEARCH_API.md |
+| `architecture-legacy/` | Historical reference, deprecated systems | VALUE_PROPOSITION_SYSTEM.md |
+| `features/` | Specific features that work across architectures | MESSAGE_BROKER.md, CACHING.md |
+| `operations/` | Setup, deployment, testing, monitoring | QUICKSTART.md, DOCKER_SETUP.md |
 
 ## Production Considerations
 

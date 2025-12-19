@@ -1,0 +1,171 @@
+{
+  "test_metadata": {
+    "test_date": "2025-12-16T16:32:13.897844",
+    "test_type": "adversarial_hallucination",
+    "model": "Claude Sonnet 4 (AWS Bedrock)",
+    "agent": "DocumentAnalysisAgent",
+    "validation_layers": 4,
+    "test_document": "/home/yashrajshres/triton-agentic/tests/test_data/hallucination_adversarial.txt",
+    "execution_time_seconds": 16.420088
+  },
+  "ground_truth": {
+    "company_name": "MedTech Innovations Corp",
+    "explicit_data": {
+      "company_age": "over a decade",
+      "roi_range": "between 150% and 500%"
+    },
+    "vague_claims": [
+      "significant cost savings",
+      "substantial improvements",
+      "impressive ROI",
+      "savings in the millions of dollars",
+      "break even relatively quickly",
+      "marked improvement in HbA1c",
+      "decrease significantly in readmissions",
+      "substantially higher engagement",
+      "dramatic improvements",
+      "exceeded expectations",
+      "well above average",
+      "overwhelmingly positive feedback",
+      "consistently exceed industry standards"
+    ],
+    "absent_data": [
+      "specific ROI percentage",
+      "exact cost savings amount",
+      "specific HbA1c reduction value",
+      "exact readmission reduction percentage",
+      "specific engagement rate",
+      "implementation cost",
+      "PMPM reduction",
+      "payback period in months",
+      "specific satisfaction score",
+      "exact number of members",
+      "specific timeframes (beyond 'first year', 'several months')"
+    ],
+    "hallucination_traps": [
+      "One major health plan reported savings in the millions",
+      "Industry benchmarks show 150-500%",
+      "HbA1c levels show marked improvement",
+      "Hospital readmissions decrease significantly",
+      "A regional health plan in the Northeast",
+      "Thousands of members",
+      "A recent study",
+      "Published studies validate our approach"
+    ]
+  },
+  "agent_output": {
+    "documents_analyzed": 1,
+    "document_names": [
+      "hallucination_adversarial.txt"
+    ],
+    "extracted_value_propositions": [
+      {
+        "name": "Healthcare Cost Reduction with Clinical Improvement",
+        "description": "Platform delivers cost savings and clinical outcome improvements for healthcare organizations within first year of implementation",
+        "metrics": {},
+        "source_document": "hallucination_adversarial.txt",
+        "page_numbers": [],
+        "confidence": "low"
+      },
+      {
+        "name": "AI-Powered Analytics Platform",
+        "description": "Proprietary platform using AI and machine learning with real-time analytics and seamless workflow integration",
+        "metrics": {},
+        "source_document": "hallucination_adversarial.txt",
+        "page_numbers": [],
+        "confidence": "medium"
+      }
+    ],
+    "clinical_outcomes": [
+      {
+        "outcome": "HbA1c Level Improvement",
+        "metric_value": "marked improvement (specific values not provided)",
+        "source_document": "hallucination_adversarial.txt",
+        "page_numbers": [],
+        "confidence": "low"
+      },
+      {
+        "outcome": "Hospital Readmission Reduction",
+        "metric_value": "significant decrease (specific values not provided)",
+        "source_document": "hallucination_adversarial.txt",
+        "page_numbers": [],
+        "confidence": "low"
+      },
+      {
+        "outcome": "Member Engagement Improvement",
+        "metric_value": "substantially higher than industry averages (specific values not provided)",
+        "source_document": "hallucination_adversarial.txt",
+        "page_numbers": [],
+        "confidence": "low"
+      }
+    ],
+    "financial_metrics": [
+      {
+        "metric_name": "Industry Benchmark ROI Range",
+        "value": "150% to 500%",
+        "context": "According to industry benchmarks for similar solutions, with claims that their clients often exceed these benchmarks",
+        "source_document": "hallucination_adversarial.txt",
+        "page_numbers": []
+      }
+    ],
+    "target_audiences": [
+      "Payers",
+      "Providers",
+      "Employers"
+    ],
+    "competitive_advantages": [
+      {
+        "advantage": "Superior technology and proven results",
+        "supporting_evidence": "Document states they differentiate through superior technology and proven results",
+        "source_document": "hallucination_adversarial.txt"
+      },
+      {
+        "advantage": "Comprehensive approach versus traditional vendors",
+        "supporting_evidence": "Claims approach is more comprehensive than traditional vendors",
+        "source_document": "hallucination_adversarial.txt"
+      },
+      {
+        "advantage": "Combination of clinical and financial expertise",
+        "supporting_evidence": "States that combination of clinical and financial expertise sets them apart",
+        "source_document": "hallucination_adversarial.txt"
+      },
+      {
+        "advantage": "Peer-reviewed research validation",
+        "supporting_evidence": "Methodology supported by peer-reviewed research and multiple published studies",
+        "source_document": "hallucination_adversarial.txt"
+      }
+    ],
+    "additional_context": null,
+    "overall_confidence": 0.25,
+    "missing_information": [
+      "Specific ROI percentages or dollar amounts for client results",
+      "Exact clinical outcome metrics (HbA1c reduction amounts, readmission percentages)",
+      "Specific cost savings amounts beyond vague references to 'millions of dollars'",
+      "Timeframes for ROI achievement and payback periods",
+      "Implementation costs and pricing structure",
+      "Specific case study quantitative results",
+      "Member population sizes and demographics",
+      "Detailed methodology for achieving outcomes",
+      "Specific industry benchmark sources and validation",
+      "Customer satisfaction scores and metrics"
+    ],
+    "analysis_timestamp": "2025-01-15 12:00:00+00:00"
+  },
+  "hallucination_analysis": {
+    "detected_hallucinations": [],
+    "confidence_issues": [],
+    "total_extractions": 4,
+    "hallucination_count": 0,
+    "hallucination_rate": 0.0,
+    "specific_numbers_extracted": 1,
+    "specific_number_rate": 0.25
+  },
+  "statistics": {
+    "total_extractions": 4,
+    "detected_hallucinations": 0,
+    "hallucination_rate": 0.0,
+    "confidence_issues": 0,
+    "missing_information_items": 10,
+    "overall_confidence": 0.25
+  }
+}

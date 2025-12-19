@@ -12,6 +12,10 @@ Run with: uvicorn app:app --reload
 import sys
 from pathlib import Path
 from datetime import datetime
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
@@ -21,7 +25,7 @@ from fastapi.exceptions import RequestValidationError
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from api.routes import templates, jobs, clients, prospect_data, research, roi_models
+from api.routes import templates, jobs, clients, prospect_data, research, roi_models, lineage
 from api.models.responses import ErrorResponse, HealthCheckResponse
 from core.database import init_db, close_db, health_check as db_health_check
 from core.monitoring.logger import get_logger
@@ -193,6 +197,7 @@ app.include_router(templates.router)
 app.include_router(prospect_data.router)
 app.include_router(research.router)
 app.include_router(roi_models.router)
+app.include_router(lineage.router)
 
 
 # Startup event

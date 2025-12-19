@@ -366,9 +366,9 @@ The system can be used immediately for:
 
 ## 🔗 Related Documentation
 
-- [Message Broker Implementation](./MESSAGE_BROKER_IMPLEMENTATION.md)
-- [Message Broker Testing Guide](./MESSAGE_BROKER_TESTING.md)
-- [Prospect Data Generation](./PROSPECT_DATA_GENERATION.md)
+- [Message Broker Implementation](./../features/MESSAGE_BROKER_IMPLEMENTATION.md)
+- [Message Broker Testing Guide](./../features/MESSAGE_BROKER_TESTING.md)
+- [Prospect Data Generation](./../features/PROSPECT_DATA_GENERATION.md)
 - [API Reference](./API_README.md)
 
 ---

@@ -1,0 +1,309 @@
+{
+  "test_metadata": {
+    "test_date": "2025-12-16T16:11:16.753905",
+    "model": "Claude Sonnet 4 (AWS Bedrock)",
+    "agent": "DocumentAnalysisAgent",
+    "validation_layers": 4,
+    "test_document": "/home/yashrajshres/triton-agentic/tests/test_data/hallucination_baseline_roi.txt",
+    "execution_time_seconds": 17.987364530563354
+  },
+  "ground_truth": {
+    "company_name": "HealthFirst Solutions",
+    "value_propositions": [
+      {
+        "name": "Cost Reduction Through Preventive Care",
+        "description": "reduces healthcare costs for payers through early identification of at-risk members"
+      }
+    ],
+    "financial_metrics": [
+      {
+        "metric": "ROI",
+        "value": "250%",
+        "context": "over 18 months"
+      },
+      {
+        "metric": "Annual Cost Savings",
+        "value": "$1.2 million",
+        "context": "per 10,000 members"
+      },
+      {
+        "metric": "PMPM Reduction",
+        "value": "$4.50",
+        "context": "per member per month"
+      },
+      {
+        "metric": "Implementation Cost",
+        "value": "$500,000",
+        "context": "upfront investment"
+      }
+    ],
+    "clinical_outcomes": [
+      {
+        "outcome": "HbA1c Reduction",
+        "value": "0.8%",
+        "context": "average among diabetic members"
+      },
+      {
+        "outcome": "Hospital Readmission Rate",
+        "value": "22%",
+        "context": "reduction in 30-day readmissions"
+      },
+      {
+        "outcome": "Member Engagement",
+        "value": "68%",
+        "context": "active engagement rate"
+      }
+    ],
+    "target_audiences": [
+      "Health Plans",
+      "Third-Party Administrators",
+      "TPAs"
+    ],
+    "case_study_metrics": [
+      {
+        "metric": "Blue Shield Total Savings",
+        "value": "$6 million",
+        "context": "over 18 months"
+      },
+      {
+        "metric": "Blue Shield ROI",
+        "value": "340%",
+        "context": "excluding implementation costs"
+      },
+      {
+        "metric": "ER Visit Reduction",
+        "value": "31%",
+        "context": "for chronic conditions"
+      }
+    ]
+  },
+  "agent_output": {
+    "documents_analyzed": 1,
+    "document_names": [
+      "hallucination_baseline_roi.txt"
+    ],
+    "extracted_value_propositions": [
+      {
+        "name": "Cost Reduction Through Preventive Care",
+        "description": "Proven cost reduction solution by focusing on preventive care interventions. Platform reduces healthcare costs for payers through early identification of at-risk members.",
+        "metrics": {
+          "roi": "250%",
+          "timeframe_months": 18,
+          "annual_savings_per_10k": "$1.2 million",
+          "pmpm_reduction": "$4.50",
+          "implementation_cost": "$500,000"
+        },
+        "source_document": "hallucination_baseline_roi.txt",
+        "page_numbers": [
+          1
+        ],
+        "confidence": "high"
+      }
+    ],
+    "clinical_outcomes": [
+      {
+        "outcome": "HbA1c Reduction",
+        "metric_value": "Average reduction of 0.8% among diabetic members",
+        "source_document": "hallucination_baseline_roi.txt",
+        "page_numbers": [
+          1
+        ],
+        "confidence": "high"
+      },
+      {
+        "outcome": "Hospital Readmission Rate Reduction",
+        "metric_value": "22% reduction in 30-day readmissions",
+        "source_document": "hallucination_baseline_roi.txt",
+        "page_numbers": [
+          1
+        ],
+        "confidence": "high"
+      },
+      {
+        "outcome": "Member Engagement Rate",
+        "metric_value": "68% active engagement rate",
+        "source_document": "hallucination_baseline_roi.txt",
+        "page_numbers": [
+          1
+        ],
+        "confidence": "high"
+      }
+    ],
+    "financial_metrics": [
+      {
+        "metric_name": "18-Month ROI",
+        "value": "250%",
+        "context": "Return on investment over 18 months",
+        "source_document": "hallucination_baseline_roi.txt",
+        "page_numbers": [
+          1
+        ]
+      },
+      {
+        "metric_name": "Annual Cost Savings",
+        "value": "$1.2 million per 10,000 members",
+        "context": "Annual cost savings per 10,000 member population",
+        "source_document": "hallucination_baseline_roi.txt",
+        "page_numbers": [
+          1
+        ]
+      },
+      {
+        "metric_name": "PMPM Reduction",
+        "value": "$4.50",
+        "context": "Per member per month cost reduction",
+        "source_document": "hallucination_baseline_roi.txt",
+        "page_numbers": [
+          1
+        ]
+      },
+      {
+        "metric_name": "Implementation Cost",
+        "value": "$500,000",
+        "context": "Upfront investment required for implementation",
+        "source_document": "hallucination_baseline_roi.txt",
+        "page_numbers": [
+          1
+        ]
+      },
+      {
+        "metric_name": "Case Study ROI - Blue Shield Regional",
+        "value": "340%",
+        "context": "ROI excluding implementation costs for Blue Shield Regional case study with 50,000 members over 18 months",
+        "source_document": "hallucination_baseline_roi.txt",
+        "page_numbers": [
+          1
+        ]
+      },
+      {
+        "metric_name": "Case Study Total Savings - Blue Shield Regional",
+        "value": "$6 million",
+        "context": "Total savings over 18 months for 50,000 member population",
+        "source_document": "hallucination_baseline_roi.txt",
+        "page_numbers": [
+          1
+        ]
+      }
+    ],
+    "target_audiences": [
+      "Health Plan",
+      "TPA"
+    ],
+    "competitive_advantages": [
+      {
+        "advantage": "Proprietary predictive analytics engine with 92% accuracy",
+        "supporting_evidence": "Explicitly stated as competitive advantage with specific accuracy metric",
+        "source_document": "hallucination_baseline_roi.txt"
+      },
+      {
+        "advantage": "Real-time risk stratification capabilities",
+        "supporting_evidence": "Listed as key competitive differentiator",
+        "source_document": "hallucination_baseline_roi.txt"
+      },
+      {
+        "advantage": "Seamless EHR integration with major platforms",
+        "supporting_evidence": "Mentioned as competitive advantage for implementation ease",
+        "source_document": "hallucination_baseline_roi.txt"
+      },
+      {
+        "advantage": "24/7 clinical support team",
+        "supporting_evidence": "Listed as service differentiator",
+        "source_document": "hallucination_baseline_roi.txt"
+      }
+    ],
+    "additional_context": null,
+    "overall_confidence": 0.92,
+    "missing_information": [
+      "Clinical study methodology not detailed",
+      "Sample sizes for clinical outcomes not specified",
+      "Implementation timeline costs not broken down by phase"
+    ],
+    "analysis_timestamp": "2025-01-15 12:00:00+00:00"
+  },
+  "statistics": {
+    "total_extractions": 9,
+    "exact_matches": 3,
+    "exact_match_rate": 0.3333333333333333,
+    "paraphrases": 4,
+    "paraphrase_rate": 0.4444444444444444,
+    "wrong_values": 1,
+    "wrong_value_rate": 0.1111111111111111,
+    "hallucinations": 1,
+    "hallucination_rate": 0.1111111111111111
+  },
+  "comparison_details": [
+    {
+      "type": "financial_metric",
+      "metric": "18-Month ROI",
+      "extracted": "250%",
+      "truth": "250%",
+      "match_type": "exact",
+      "confidence": "unknown"
+    },
+    {
+      "type": "financial_metric",
+      "metric": "Annual Cost Savings",
+      "extracted": "$1.2 million per 10,000 members",
+      "truth": "$1.2 million",
+      "match_type": "paraphrase",
+      "confidence": "unknown"
+    },
+    {
+      "type": "financial_metric",
+      "metric": "PMPM Reduction",
+      "extracted": "$4.50",
+      "truth": "$4.50",
+      "match_type": "exact",
+      "confidence": "unknown"
+    },
+    {
+      "type": "financial_metric",
+      "metric": "Implementation Cost",
+      "extracted": "$500,000",
+      "truth": "$500,000",
+      "match_type": "exact",
+      "confidence": "unknown"
+    },
+    {
+      "type": "financial_metric",
+      "metric": "Case Study ROI - Blue Shield Regional",
+      "extracted": "340%",
+      "truth": "250%",
+      "match_type": "wrong_value",
+      "confidence": "unknown"
+    },
+    {
+      "type": "financial_metric",
+      "metric": "Case Study Total Savings - Blue Shield Regional",
+      "extracted": "$6 million",
+      "truth": null,
+      "match_type": "hallucinated",
+      "confidence": "unknown",
+      "note": "Metric not found in source document"
+    },
+    {
+      "type": "clinical_outcome",
+      "metric": "HbA1c Reduction",
+      "extracted": "Average reduction of 0.8% among diabetic members",
+      "truth": "0.8%",
+      "match_type": "paraphrase",
+      "confidence": "high"
+    },
+    {
+      "type": "clinical_outcome",
+      "metric": "Hospital Readmission Rate Reduction",
+      "extracted": "22% reduction in 30-day readmissions",
+      "truth": "22%",
+      "match_type": "paraphrase",
+      "confidence": "high"
+    },
+    {
+      "type": "clinical_outcome",
+      "metric": "Member Engagement Rate",
+      "extracted": "68% active engagement rate",
+      "truth": "68%",
+      "match_type": "paraphrase",
+      "confidence": "high"
+    }
+  ]
+}

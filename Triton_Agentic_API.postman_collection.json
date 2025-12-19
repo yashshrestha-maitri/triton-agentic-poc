@@ -1,0 +1,960 @@
+{
+	"info": {
+		"_postman_id": "triton-agentic-api-collection",
+		"name": "Triton Agentic API",
+		"description": "Complete API collection for Triton Agentic healthcare dashboard generation system with ROI models, research agents, and data lineage tracking.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Research APIs",
+			"item": [
+				{
+					"name": "Web Search Research",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"client_company_name\": \"VirtualPT Health\",\n  \"research_mode\": \"autonomous\",\n  \"industry_hint\": \"MSK episode management\",\n  \"additional_context\": \"Focus on ROI and clinical outcomes\",\n  \"max_searches\": 5\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/research/web-search?trigger_roi_generation=false",
+							"host": ["{{baseUrl}}"],
+							"path": ["research", "web-search"],
+							"query": [
+								{
+									"key": "trigger_roi_generation",
+									"value": "false",
+									"description": "Auto-trigger ROI model generation after research"
+								}
+							]
+						},
+						"description": "Conduct autonomous web search research for a client company"
+					},
+					"response": []
+				},
+				{
+					"name": "Document Analysis",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"client_company_name\": \"Acme Health\",\n  \"document_url\": \"s3://triton-docs/clients/acme/roi_analysis.pdf\",\n  \"document_type\": \"roi_analysis\",\n  \"analysis_focus\": \"Extract ROI metrics and clinical outcomes\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/research/document-analysis",
+							"host": ["{{baseUrl}}"],
+							"path": ["research", "document-analysis"]
+						},
+						"description": "Analyze a document to extract value propositions and ROI data"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Research Job Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/research/{{research_job_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["research", "{{research_job_id}}"]
+						},
+						"description": "Get status and results of a research job"
+					},
+					"response": []
+				},
+				{
+					"name": "List Research Jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/research/?status=completed&limit=50",
+							"host": ["{{baseUrl}}"],
+							"path": ["research", ""],
+							"query": [
+								{
+									"key": "status",
+									"value": "completed"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								}
+							]
+						},
+						"description": "List all research jobs with optional filtering"
+					},
+					"response": []
+				},
+				{
+					"name": "Research Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/research/stats/summary",
+							"host": ["{{baseUrl}}"],
+							"path": ["research", "stats", "summary"]
+						},
+						"description": "Get aggregate statistics for all research jobs"
+					},
+					"response": []
+				},
+				{
+					"name": "Validate Research Results",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"research_result\": {\n    \"company_overview\": \"VirtualPT provides MSK care...\",\n    \"value_propositions\": [\n      \"Reduce ER visits by 30%\"\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/research/validate",
+							"host": ["{{baseUrl}}"],
+							"path": ["research", "validate"]
+						},
+						"description": "Validate research results against schema"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. ROI Model APIs",
+			"item": [
+				{
+					"name": "Generate ROI Model",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"client_name\": \"VirtualPT Health\",\n  \"research_data\": {\n    \"research_summary\": \"VirtualPT Health provides comprehensive MSK episode management with virtual physical therapy. Key metrics: 30% reduction in ER visits, 25% reduction in surgery rates, $2,500 PMPY savings.\",\n    \"web_search_data\": {},\n    \"document_analysis_data\": {}\n  },\n  \"model_type_override\": null,\n  \"max_retries\": 3,\n  \"save_to_file\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/roi-models/generate",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "roi-models", "generate"]
+						},
+						"description": "Generate complete 15-component ROI model from research data. Returns job_id for async tracking."
+					},
+					"response": []
+				},
+				{
+					"name": "Generate ROI Model (B7 Override)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"client_name\": \"VirtualPT Health\",\n  \"research_data\": {\n    \"research_summary\": \"VirtualPT provides MSK episode management...\"\n  },\n  \"model_type_override\": \"B7\",\n  \"max_retries\": 3,\n  \"save_to_file\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/roi-models/generate",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "roi-models", "generate"]
+						},
+						"description": "Skip classification and generate B7 (Episode Optimization) model directly"
+					},
+					"response": []
+				},
+				{
+					"name": "Get ROI Job Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/roi-models/{{roi_job_id}}/status",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "roi-models", "{{roi_job_id}}", "status"]
+						},
+						"description": "Track ROI model generation job status (pending → classifying → generating → completed)"
+					},
+					"response": []
+				},
+				{
+					"name": "List ROI Jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/roi-models/?status=completed&limit=50",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "roi-models", ""],
+							"query": [
+								{
+									"key": "status",
+									"value": "completed"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								}
+							]
+						},
+						"description": "List all ROI model generation jobs"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete ROI Job",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/roi-models/{{roi_job_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "roi-models", "{{roi_job_id}}"]
+						},
+						"description": "Delete a specific ROI job"
+					},
+					"response": []
+				},
+				{
+					"name": "List Saved ROI Models",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/roi-models/results/files",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "roi-models", "results", "files"]
+						},
+						"description": "List all saved ROI model JSON files"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Saved ROI Model",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/roi-models/results/files/roi_model_VirtualPT_Health_B7_20251218.json",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "roi-models", "results", "files", "roi_model_VirtualPT_Health_B7_20251218.json"]
+						},
+						"description": "Get contents of a specific saved ROI model file"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Data Lineage APIs",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lineage/health",
+							"host": ["{{baseUrl}}"],
+							"path": ["lineage", "health"]
+						},
+						"description": "Check if lineage API and database are operational"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Lineage by Extraction ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lineage/33333333-3333-3333-3333-333333333333",
+							"host": ["{{baseUrl}}"],
+							"path": ["lineage", "33333333-3333-3333-3333-333333333333"]
+						},
+						"description": "Get complete lineage record for a specific extraction"
+					},
+					"response": []
+				},
+				{
+					"name": "Find Lineage by Document Hash",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lineage/document/a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2",
+							"host": ["{{baseUrl}}"],
+							"path": ["lineage", "document", "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2"]
+						},
+						"description": "Find all extractions from a specific source document"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Audit Trail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lineage/audit-trail/33333333-3333-3333-3333-333333333333",
+							"host": ["{{baseUrl}}"],
+							"path": ["lineage", "audit-trail", "33333333-3333-3333-3333-333333333333"]
+						},
+						"description": "Get complete audit trail including ROI models and dashboards"
+					},
+					"response": []
+				},
+				{
+					"name": "Impact Analysis",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"document_hash\": \"a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2\",\n  \"reason\": \"Document found to be incorrect - ROI should be 200% not 250%\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lineage/impact-analysis",
+							"host": ["{{baseUrl}}"],
+							"path": ["lineage", "impact-analysis"]
+						},
+						"description": "Analyze impact of document change - which ROI models and dashboards are affected?"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flagged Extractions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lineage/flagged?limit=50",
+							"host": ["{{baseUrl}}"],
+							"path": ["lineage", "flagged"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "50"
+								}
+							]
+						},
+						"description": "Get all extractions flagged for manual review"
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Extraction as Verified",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"verified_by\": \"john.doe@acme-health.com\",\n  \"notes\": \"Manually verified against source document page 3\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lineage/33333333-3333-3333-3333-333333333333/verify",
+							"host": ["{{baseUrl}}"],
+							"path": ["lineage", "33333333-3333-3333-3333-333333333333", "verify"]
+						},
+						"description": "Mark extraction as verified after manual review"
+					},
+					"response": []
+				},
+				{
+					"name": "Flag Extraction for Review",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"issues\": [\n    \"Extracted value not found in source document\",\n    \"Confidence score below threshold (0.65)\"\n  ],\n  \"flagged_by\": \"automated_verification_layer5\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/lineage/33333333-3333-3333-3333-333333333333/flag",
+							"host": ["{{baseUrl}}"],
+							"path": ["lineage", "33333333-3333-3333-3333-333333333333", "flag"]
+						},
+						"description": "Flag extraction for manual review due to verification issues"
+					},
+					"response": []
+				},
+				{
+					"name": "Lineage Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/lineage/stats/summary",
+							"host": ["{{baseUrl}}"],
+							"path": ["lineage", "stats", "summary"]
+						},
+						"description": "Get aggregate statistics for data lineage"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Prospect Data APIs",
+			"item": [
+				{
+					"name": "Generate Prospect Data (Sync)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"prospect_name\": \"Acme Health Plan\",\n  \"industry\": \"Healthcare\",\n  \"member_count\": 500000,\n  \"template_count\": 5\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/prospect-data/generate",
+							"host": ["{{baseUrl}}"],
+							"path": ["prospect-data", "generate"]
+						},
+						"description": "Generate prospect dashboard data synchronously (immediate response)"
+					},
+					"response": []
+				},
+				{
+					"name": "Generate Prospect Data (Async)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"prospect_name\": \"BlueCross BlueShield\",\n  \"industry\": \"Healthcare Payer\",\n  \"member_count\": 2000000,\n  \"template_count\": 10\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/prospect-data/generate-async",
+							"host": ["{{baseUrl}}"],
+							"path": ["prospect-data", "generate-async"]
+						},
+						"description": "Generate prospect dashboard data asynchronously (background job)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Prospect Job Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prospect-data/jobs/{{prospect_job_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["prospect-data", "jobs", "{{prospect_job_id}}"]
+						},
+						"description": "Get status of async prospect data generation job"
+					},
+					"response": []
+				},
+				{
+					"name": "List Prospect Templates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prospect-data/{{prospect_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["prospect-data", "{{prospect_id}}"]
+						},
+						"description": "List all dashboard templates for a specific prospect"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Prospect Template",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prospect-data/{{prospect_id}}/{{template_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["prospect-data", "{{prospect_id}}", "{{template_id}}"]
+						},
+						"description": "Get specific dashboard template for prospect"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Prospect Template",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prospect-data/{{prospect_id}}/{{template_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["prospect-data", "{{prospect_id}}", "{{template_id}}"]
+						},
+						"description": "Delete a specific prospect template"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5. Client APIs",
+			"item": [
+				{
+					"name": "Create Client",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"VirtualPT Health\",\n  \"industry\": \"Healthcare - MSK Management\",\n  \"description\": \"Virtual physical therapy and musculoskeletal episode management\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clients/",
+							"host": ["{{baseUrl}}"],
+							"path": ["clients", ""]
+						},
+						"description": "Create a new client record"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clients/{{client_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["clients", "{{client_id}}"]
+						},
+						"description": "Get client details by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "List All Clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clients/",
+							"host": ["{{baseUrl}}"],
+							"path": ["clients", ""]
+						},
+						"description": "List all clients"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client with Value Props",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clients/{{client_id}}/with-value-props",
+							"host": ["{{baseUrl}}"],
+							"path": ["clients", "{{client_id}}", "with-value-props"]
+						},
+						"description": "Get client with all associated value propositions"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Value Proposition",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Reduce ER Visits\",\n  \"description\": \"30% reduction in emergency room visits for MSK conditions\",\n  \"category\": \"cost_reduction\",\n  \"impact_metrics\": {\n    \"er_visit_reduction\": \"30%\",\n    \"savings_pmpy\": \"$2500\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clients/{{client_id}}/value-propositions",
+							"host": ["{{baseUrl}}"],
+							"path": ["clients", "{{client_id}}", "value-propositions"]
+						},
+						"description": "Add a value proposition to a client"
+					},
+					"response": []
+				},
+				{
+					"name": "List Value Propositions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clients/{{client_id}}/value-propositions",
+							"host": ["{{baseUrl}}"],
+							"path": ["clients", "{{client_id}}", "value-propositions"]
+						},
+						"description": "List all value propositions for a client"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Value Proposition",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Reduce ER Visits - Updated\",\n  \"description\": \"35% reduction in emergency room visits\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clients/{{client_id}}/value-propositions/{{vp_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["clients", "{{client_id}}", "value-propositions", "{{vp_id}}"]
+						},
+						"description": "Update an existing value proposition"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "6. Template APIs",
+			"item": [
+				{
+					"name": "List Templates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/templates/?category=clinical_outcomes&limit=20",
+							"host": ["{{baseUrl}}"],
+							"path": ["templates", ""],
+							"query": [
+								{
+									"key": "category",
+									"value": "clinical_outcomes"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						},
+						"description": "List all dashboard templates with optional filtering"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Template",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/templates/{{template_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["templates", "{{template_id}}"]
+						},
+						"description": "Get specific template by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "List Template Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/templates/categories/list",
+							"host": ["{{baseUrl}}"],
+							"path": ["templates", "categories", "list"]
+						},
+						"description": "Get list of all available template categories"
+					},
+					"response": []
+				},
+				{
+					"name": "List Template Audiences",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/templates/audiences/list",
+							"host": ["{{baseUrl}}"],
+							"path": ["templates", "audiences", "list"]
+						},
+						"description": "Get list of all target audiences"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "7. Jobs APIs",
+			"item": [
+				{
+					"name": "Create Job",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"job_type\": \"template_generation\",\n  \"parameters\": {\n    \"client_name\": \"Test Client\",\n    \"template_count\": 5\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/jobs/",
+							"host": ["{{baseUrl}}"],
+							"path": ["jobs", ""]
+						},
+						"description": "Create a new background job"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Job Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/jobs/{{job_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["jobs", "{{job_id}}"]
+						},
+						"description": "Get job status and results"
+					},
+					"response": []
+				},
+				{
+					"name": "List Jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/jobs/?status=running&limit=50",
+							"host": ["{{baseUrl}}"],
+							"path": ["jobs", ""],
+							"query": [
+								{
+									"key": "status",
+									"value": "running"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								}
+							]
+						},
+						"description": "List all jobs with optional filtering"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Job",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/jobs/{{job_id}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["jobs", "{{job_id}}"]
+						},
+						"description": "Delete a job and its results"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "8. Health & Status",
+			"item": [
+				{
+					"name": "API Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/health",
+							"host": ["{{baseUrl}}"],
+							"path": ["health"]
+						},
+						"description": "Check overall API health"
+					},
+					"response": []
+				},
+				{
+					"name": "Root Endpoint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/",
+							"host": ["{{baseUrl}}"],
+							"path": [""]
+						},
+						"description": "API root endpoint with version info"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Set dynamic variables",
+					"if (!pm.collectionVariables.get('research_job_id')) {",
+					"    pm.collectionVariables.set('research_job_id', '550e8400-e29b-41d4-a716-446655440000');",
+					"}",
+					"if (!pm.collectionVariables.get('roi_job_id')) {",
+					"    pm.collectionVariables.set('roi_job_id', '660e8400-e29b-41d4-a716-446655440001');",
+					"}",
+					"if (!pm.collectionVariables.get('client_id')) {",
+					"    pm.collectionVariables.set('client_id', '770e8400-e29b-41d4-a716-446655440002');",
+					"}",
+					"if (!pm.collectionVariables.get('prospect_id')) {",
+					"    pm.collectionVariables.set('prospect_id', '880e8400-e29b-41d4-a716-446655440003');",
+					"}",
+					"if (!pm.collectionVariables.get('template_id')) {",
+					"    pm.collectionVariables.set('template_id', '990e8400-e29b-41d4-a716-446655440004');",
+					"}",
+					"if (!pm.collectionVariables.get('job_id')) {",
+					"    pm.collectionVariables.set('job_id', 'aa0e8400-e29b-41d4-a716-446655440005');",
+					"}",
+					"if (!pm.collectionVariables.get('vp_id')) {",
+					"    pm.collectionVariables.set('vp_id', 'bb0e8400-e29b-41d4-a716-446655440006');",
+					"}",
+					"if (!pm.collectionVariables.get('prospect_job_id')) {",
+					"    pm.collectionVariables.set('prospect_job_id', 'cc0e8400-e29b-41d4-a716-446655440007');",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-save job IDs from responses",
+					"if (pm.response.code === 201 || pm.response.code === 202) {",
+					"    const jsonData = pm.response.json();",
+					"    if (jsonData.job_id) {",
+					"        pm.collectionVariables.set('latest_job_id', jsonData.job_id);",
+					"        console.log('Saved job_id:', jsonData.job_id);",
+					"    }",
+					"    if (jsonData.client_id) {",
+					"        pm.collectionVariables.set('latest_client_id', jsonData.client_id);",
+					"    }",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "research_job_id",
+			"value": "550e8400-e29b-41d4-a716-446655440000",
+			"type": "string"
+		},
+		{
+			"key": "roi_job_id",
+			"value": "660e8400-e29b-41d4-a716-446655440001",
+			"type": "string"
+		},
+		{
+			"key": "client_id",
+			"value": "770e8400-e29b-41d4-a716-446655440002",
+			"type": "string"
+		},
+		{
+			"key": "prospect_id",
+			"value": "880e8400-e29b-41d4-a716-446655440003",
+			"type": "string"
+		},
+		{
+			"key": "template_id",
+			"value": "990e8400-e29b-41d4-a716-446655440004",
+			"type": "string"
+		},
+		{
+			"key": "job_id",
+			"value": "aa0e8400-e29b-41d4-a716-446655440005",
+			"type": "string"
+		},
+		{
+			"key": "vp_id",
+			"value": "bb0e8400-e29b-41d4-a716-446655440006",
+			"type": "string"
+		},
+		{
+			"key": "prospect_job_id",
+			"value": "cc0e8400-e29b-41d4-a716-446655440007",
+			"type": "string"
+		}
+	]
+}

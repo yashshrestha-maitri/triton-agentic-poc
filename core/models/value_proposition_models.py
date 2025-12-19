@@ -7,6 +7,7 @@ as specified in TRITON_ENGINEERING_SPEC.md Section 4.2.
 from typing import List, Optional, Literal, Dict, Any
 from pydantic import BaseModel, Field, HttpUrl
 from datetime import datetime
+from uuid import UUID
 
 
 # =============================================================================
@@ -206,6 +207,30 @@ class ExtractedValueProposition(BaseModel):
         ..., description="Extraction confidence"
     )
 
+    # Lineage tracking fields (optional for backward compatibility)
+    source_text: Optional[str] = Field(
+        None,
+        description="Verbatim quote from source document for traceability"
+    )
+    extraction_confidence: Optional[float] = Field(
+        None,
+        ge=0.0,
+        le=1.0,
+        description="Numeric confidence score (0.0-1.0) for verification"
+    )
+    verification_status: Optional[Literal['verified', 'unverified', 'flagged']] = Field(
+        None,
+        description="Verification status after source checking"
+    )
+    verification_issues: Optional[List[str]] = Field(
+        None,
+        description="List of verification issues if flagged"
+    )
+    extraction_id: Optional[UUID] = Field(
+        None,
+        description="UUID linking to extraction_lineage table"
+    )
+
 
 class ExtractedClinicalOutcome(BaseModel):
     """Clinical outcome extracted from documents."""
@@ -215,6 +240,30 @@ class ExtractedClinicalOutcome(BaseModel):
     page_numbers: Optional[List[int]] = Field(None, description="Page numbers")
     confidence: Literal['high', 'medium', 'low'] = Field(..., description="Confidence")
 
+    # Lineage tracking fields (optional for backward compatibility)
+    source_text: Optional[str] = Field(
+        None,
+        description="Verbatim quote from source document for traceability"
+    )
+    extraction_confidence: Optional[float] = Field(
+        None,
+        ge=0.0,
+        le=1.0,
+        description="Numeric confidence score (0.0-1.0) for verification"
+    )
+    verification_status: Optional[Literal['verified', 'unverified', 'flagged']] = Field(
+        None,
+        description="Verification status after source checking"
+    )
+    verification_issues: Optional[List[str]] = Field(
+        None,
+        description="List of verification issues if flagged"
+    )
+    extraction_id: Optional[UUID] = Field(
+        None,
+        description="UUID linking to extraction_lineage table"
+    )
+
 
 class ExtractedFinancialMetric(BaseModel):
     """Financial metric extracted from documents."""
@@ -223,6 +272,30 @@ class ExtractedFinancialMetric(BaseModel):
     context: Optional[str] = Field(None, description="Context around this metric")
     source_document: str = Field(..., description="Source document")
     page_numbers: Optional[List[int]] = Field(None, description="Page numbers")
+
+    # Lineage tracking fields (optional for backward compatibility)
+    source_text: Optional[str] = Field(
+        None,
+        description="Verbatim quote from source document for traceability"
+    )
+    extraction_confidence: Optional[float] = Field(
+        None,
+        ge=0.0,
+        le=1.0,
+        description="Numeric confidence score (0.0-1.0) for verification"
+    )
+    verification_status: Optional[Literal['verified', 'unverified', 'flagged']] = Field(
+        None,
+        description="Verification status after source checking"
+    )
+    verification_issues: Optional[List[str]] = Field(
+        None,
+        description="List of verification issues if flagged"
+    )
+    extraction_id: Optional[UUID] = Field(
+        None,
+        description="UUID linking to extraction_lineage table"
+    )
 
 
 class ExtractedCompetitiveAdvantage(BaseModel):

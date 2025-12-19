@@ -514,12 +514,12 @@ mare-frontend/
 
 **Start Here**:
 1. [TRITON_PLATFORM_WORKFLOW.md](./TRITON_PLATFORM_WORKFLOW.md) - Understand the 6-step workflow
-2. [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) - Understand data storage
+2. [DATA_FLOW_EXPLANATION.md](./../features/DATA_FLOW_EXPLANATION.md) - Understand data storage
 3. [ROI_MODEL_RESEARCH_FLOW_UPDATED.md](./ROI_MODEL_RESEARCH_FLOW_UPDATED.md) - Understand ROI models
 
 **Quick Links**:
-- [Setup Guide](./QUICKSTART.md)
-- [API Documentation](./API_README.md)
+- [Setup Guide](./../operations/QUICKSTART.md)
+- [API Documentation](./../operations/API_README.md)
 
 ---
 
@@ -531,9 +531,9 @@ mare-frontend/
 3. `/roi-models/{model_id}` - Get ROI model details
 
 **Key Documents**:
-- [PROSPECT_DASHBOARD_SYSTEM.md](./PROSPECT_DASHBOARD_SYSTEM.md)
-- [MESSAGE_BROKER_IMPLEMENTATION.md](./MESSAGE_BROKER_IMPLEMENTATION.md)
-- [API_README.md](./API_README.md)
+- [PROSPECT_DASHBOARD_SYSTEM.md](./../features/PROSPECT_DASHBOARD_SYSTEM.md)
+- [MESSAGE_BROKER_IMPLEMENTATION.md](./../features/MESSAGE_BROKER_IMPLEMENTATION.md)
+- [API_README.md](./../operations/API_README.md)
 
 ---
 
@@ -547,19 +547,19 @@ mare-frontend/
 **Key Documents**:
 - [RESEARCH_AGENT_FLOW.md](./RESEARCH_AGENT_FLOW.md)
 - [ROI_MODEL_RESEARCH_FLOW_UPDATED.md](./ROI_MODEL_RESEARCH_FLOW_UPDATED.md)
-- [PROSPECT_DATA_GENERATION.md](./PROSPECT_DATA_GENERATION.md)
+- [PROSPECT_DATA_GENERATION.md](./../features/PROSPECT_DATA_GENERATION.md)
 
 ---
 
 ### For DevOps/Infrastructure
 
 **Deployment**:
-- [DOCKER_SETUP.md](./DOCKER_SETUP.md)
-- [MONITORING_SETUP.md](./MONITORING_SETUP.md)
+- [DOCKER_SETUP.md](./../operations/DOCKER_SETUP.md)
+- [MONITORING_SETUP.md](./../operations/MONITORING_SETUP.md)
 
 **Testing**:
-- [MESSAGE_BROKER_TESTING.md](./MESSAGE_BROKER_TESTING.md)
-- [TESTING_AND_MONITORING_GUIDE.md](./TESTING_AND_MONITORING_GUIDE.md)
+- [MESSAGE_BROKER_TESTING.md](./../features/MESSAGE_BROKER_TESTING.md)
+- [TESTING_AND_MONITORING_GUIDE.md](./../operations/TESTING_AND_MONITORING_GUIDE.md)
 
 ---
 
@@ -572,25 +572,25 @@ mare-frontend/
 | [TRITON_PLATFORM_WORKFLOW.md](./TRITON_PLATFORM_WORKFLOW.md) | Complete 6-step platform workflow | ✅ Comprehensive |
 | [ROI_MODEL_RESEARCH_FLOW_UPDATED.md](./ROI_MODEL_RESEARCH_FLOW_UPDATED.md) | ROI model system architecture (3 repos) | ✅ Most Recent (v3.0) |
 | [RESEARCH_AGENT_FLOW.md](./RESEARCH_AGENT_FLOW.md) | Research agent detailed flows | ✅ Complete |
-| [DATA_FLOW_EXPLANATION.md](./DATA_FLOW_EXPLANATION.md) | Data storage and retrieval | ✅ Complete |
+| [DATA_FLOW_EXPLANATION.md](./../features/DATA_FLOW_EXPLANATION.md) | Data storage and retrieval | ✅ Complete |
 
 ### API & Integration
 
 | Document | Purpose | Status |
 |----------|---------|--------|
-| [API_README.md](./API_README.md) | REST API reference | ✅ Complete |
+| [API_README.md](./../operations/API_README.md) | REST API reference | ✅ Complete |
 | [RESEARCH_API_GUIDE.md](./RESEARCH_API_GUIDE.md) | Research API endpoints | ✅ Complete |
-| [PROSPECT_DASHBOARD_SYSTEM.md](./PROSPECT_DASHBOARD_SYSTEM.md) | Frontend integration guide | ✅ Complete |
-| [MESSAGE_BROKER_IMPLEMENTATION.md](./MESSAGE_BROKER_IMPLEMENTATION.md) | Real-time events (no polling!) | ✅ Complete |
+| [PROSPECT_DASHBOARD_SYSTEM.md](./../features/PROSPECT_DASHBOARD_SYSTEM.md) | Frontend integration guide | ✅ Complete |
+| [MESSAGE_BROKER_IMPLEMENTATION.md](./../features/MESSAGE_BROKER_IMPLEMENTATION.md) | Real-time events (no polling!) | ✅ Complete |
 
 ### Setup & Operations
 
 | Document | Purpose | Status |
 |----------|---------|--------|
-| [QUICKSTART.md](./QUICKSTART.md) | 5-minute setup guide | ✅ Complete |
-| [DOCKER_SETUP.md](./DOCKER_SETUP.md) | Container deployment | ✅ Complete |
-| [MONITORING_SETUP.md](./MONITORING_SETUP.md) | Observability stack | ✅ Complete |
-| [TESTING_AND_MONITORING_GUIDE.md](./TESTING_AND_MONITORING_GUIDE.md) | Testing best practices | ✅ Complete |
+| [QUICKSTART.md](./../operations/QUICKSTART.md) | 5-minute setup guide | ✅ Complete |
+| [DOCKER_SETUP.md](./../operations/DOCKER_SETUP.md) | Container deployment | ✅ Complete |
+| [MONITORING_SETUP.md](./../operations/MONITORING_SETUP.md) | Observability stack | ✅ Complete |
+| [TESTING_AND_MONITORING_GUIDE.md](./../operations/TESTING_AND_MONITORING_GUIDE.md) | Testing best practices | ✅ Complete |
 
 ### Additional Documentation
 
